@@ -1,23 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
-
+import "./styles.css";
+import Rater from "./Rater";
+import Thanks from "./Thanks";
+import { useState } from "react";
 function App() {
+  const [submitted, setSubmitted] = useState(false);
+  const [number, setNumber] = useState(null);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {!submitted ? (
+        <Rater
+          isActive={submitted}
+          setActive={setSubmitted}
+          setNumber={setNumber}
+        />
+      ) : (
+        <Thanks isActive={submitted} number={number} />
+      )}
     </div>
   );
 }
